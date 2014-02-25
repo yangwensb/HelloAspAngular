@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using HelloAspAngular.App;
-using HelloAspAngular.App.Dto;
+using HelloAspAngular.App.Transfer;
 using HelloAspAngular.Domain.Todos;
 using HelloAspAngular.Web.Api.ResourceModels;
 using System;

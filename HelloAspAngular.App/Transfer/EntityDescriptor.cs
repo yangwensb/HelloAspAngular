@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.App.Dto
+namespace HelloAspAngular.App.Transfer
 {
     public class EntityDescriptor
     {
