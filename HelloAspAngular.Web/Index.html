@@ -1,0 +1,57 @@
+﻿<!DOCTPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Sample</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular-resource.min.js"></script>    
+    <script type="text/javascript">
+    angular.module("app", ["ngResource"]).
+      config(["$routeProvider", function($routeProvider) {
+        $routeProvider.
+          when("/", {
+            // テンプレート文字列を指定
+            template: '<a href="#/new">New</a>' +
+                      '<ul>' +
+                      '<li ng-repeat="guest in guests">{{ guest.name }}</li>' + 
+                      '</ul>',
+            
+            // テンプレートにバインドするコントロールの名前を指定
+            controller: "MainCtrl" 
+          }).
+          when("/new", {
+            // テンプレートの URL を指定
+            templateUrl: "/new.html",
+
+            // テンプレートンバインドするコントローラーを指定
+            controller: NewCtrl
+          });
+      }]);
+
+    function MainCtrl($scope, $resource) {
+      var Guest = $resource("/guests");
+      $scope.guests = Guest.query();
+    }
+
+    function NewCtrl($scope, $resource, $location) {
+      $scope.guestName = "";
+      
+      // API の URL を指定してモデルを作成
+      var Guest = $resource("/guests");
+
+      $scope.addGuest = function() {
+        Guest.save({ name: $scope.guestName }, function(guest) {
+          // 作成に成功したら一覧に戻る
+          $location.path("/");
+        });
+
+        $scope.guestName = "";
+      };
+    }
+    </script>
+  </head>
+  <body>
+    <!--ビューを埋め込む要素は ng-view でマークする-->
+    <div ng-view></div>
+  </body>
+</html>

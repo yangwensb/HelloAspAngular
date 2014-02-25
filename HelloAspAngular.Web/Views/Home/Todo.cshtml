@@ -1,0 +1,11 @@
+﻿<h1 class="page-header">Todo</h1>
+
+<div>
+    <p ng-show="todoLists === null">データのロード中です...</p>
+
+    <div ng-show="todoLists !== null">
+        @Html.Partial("Todo/_TodoListTabs")
+        @Html.Partial("Todo/_TodoList")
+        @Html.Partial("Todo/_AddTodoForm")
+    </div>
+</div>
