@@ -19,5 +19,15 @@ namespace HelloAspAngular.Domain.Todos
         public string Name { get; set; }
         public byte[] RowVersion { get; set; }
         public virtual ICollection<Todo> Todos { get; private set; }
+
+        public IEnumerable<Todo> Archive()
+        {
+            var todos = Todos.Where(t => t.IsDone).ToArray();
+            foreach (var todo in todos)
+            {
+                Todos.Remove(todo);
+            }
+            return todos;
+        }
     }
 }

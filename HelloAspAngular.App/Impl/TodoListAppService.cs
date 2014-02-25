@@ -62,7 +62,7 @@ namespace HelloAspAngular.App.Impl
             var lists = await _unitOfWork.TodoListRepository.FindAsync(l => l.Id == list.Id, null, new[] { "Todos" });
             var storedList = lists.FirstOrDefault();
 
-            var todos = storedList.Todos.Where(t => t.IsDone);
+            var todos = storedList.Archive();
             _unitOfWork.TodoListRepository.RemoveTodos(todos);
 
             _unitOfWork.TodoListRepository.Touch(list);
