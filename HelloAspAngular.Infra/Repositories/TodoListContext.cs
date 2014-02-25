@@ -21,7 +21,8 @@ namespace HelloAspAngular.Infra.Repositories
         public DbSet<TodoList> TodoLists { get; set; }
         public DbSet<Todo> Todos { get; set; }
 
-        public TodoListContext(): base()
+        public TodoListContext()
+            : base("HelloAspAngular")
         {
         }
 
