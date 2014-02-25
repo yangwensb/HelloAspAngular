@@ -59,8 +59,7 @@ namespace HelloAspAngular.App.Impl
                 RowVersion = todoListDesc.RowVersion,
             };
 
-            var lists = await _unitOfWork.TodoListRepository.FindAsync(l => l.Id == list.Id, null, new[] { "Todos" });
-            var storedList = lists.FirstOrDefault();
+            var storedList = await _unitOfWork.TodoListRepository.FindAsync(l => l.Id == list.Id, new[] { "Todos" });
 
             var todos = storedList.Archive();
             _unitOfWork.TodoListRepository.RemoveTodos(todos);

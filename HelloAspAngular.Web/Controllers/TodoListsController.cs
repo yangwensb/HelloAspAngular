@@ -31,15 +31,14 @@ namespace HelloAspAngular.Web.Controllers
         // GET api/todolists
         public async Task<IEnumerable<TodoListResourceModel>> Get()
         {
-            var lists = await _todoListRepository.FindAsync();
+            var lists = await _todoListRepository.FindAllAsync();
             return Mapper.Map<IEnumerable<TodoListResourceModel>>(lists);
         }
 
         // GET api/todolists/{id}
         public async Task<IHttpActionResult> Get(int id)
         {
-            var lists = await _todoListRepository.FindAsync(l => l.Id == id, null, new[] { "Todos" });
-            var list = lists.FirstOrDefault();
+            var list = await _todoListRepository.FindAsync(l => l.Id == id, new[] { "Todos" });
             var listRm = Mapper.Map<TodoListDetailResourceModel>(list);
             return ETagOk(list.RowVersion, listRm);
         }

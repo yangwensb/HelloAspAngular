@@ -30,7 +30,7 @@ namespace HelloAspAngular.Infra.Repositories
             _dbSet = context.Set<TEntity>();
         }
 
-        public async virtual Task<IEnumerable<TEntity>> FindAsync(
+        public async virtual Task<IEnumerable<TEntity>> FindAllAsync(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string[] includeProperties = null)
@@ -56,6 +56,28 @@ namespace HelloAspAngular.Infra.Repositories
             }
 
             return await query.ToArrayAsync();
+        }
+
+        public async virtual Task<TEntity> FindAsync(
+            Expression<Func<TEntity, bool>> filter = null,
+            string[] includeProperties = null)
+        {
+            IQueryable<TEntity> query = _dbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+            return await query.FirstOrDefaultAsync();
         }
 
         public async virtual Task<TEntity> FindByIdAsync(object id)

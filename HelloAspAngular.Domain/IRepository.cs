@@ -9,10 +9,15 @@ namespace HelloAspAngular.Domain
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        Task<IEnumerable<TEntity>> FindAsync(
+        Task<IEnumerable<TEntity>> FindAllAsync(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string[] includeProperties = null);
+
+        Task<TEntity> FindAsync(
+            Expression<Func<TEntity, bool>> filter = null,
+            string[] includeProperties = null);
+
         Task<TEntity> FindByIdAsync(object id);
 
         void Attach(TEntity entity);
