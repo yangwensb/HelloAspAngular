@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HelloAspAngular.Infra.Persistence
 {
-    public class GenericRepository<TEntity, TContext> : IRepository<TEntity>
+    public class Repository<TEntity, TContext> : IRepository<TEntity>
         where TEntity : class
         where TContext: DbContext
     {
@@ -25,7 +25,7 @@ namespace HelloAspAngular.Infra.Persistence
             get { return _dbSet; }
         }
 
-        internal GenericRepository(TContext context)
+        internal Repository(TContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();

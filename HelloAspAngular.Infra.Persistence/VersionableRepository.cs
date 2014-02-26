@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HelloAspAngular.Infra.Persistence
 {
-    public class VersionableRepository<TEntity, TContext> : GenericRepository<TEntity, TContext>
+    public class VersionableRepository<TEntity, TContext> : Repository<TEntity, TContext>
         where TEntity: class, IVersionable
         where TContext: DbContext
     {

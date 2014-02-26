@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace HelloAspAngular.Infra.Persistence
 {
-    public class GenericUnitOfWork: IUnitOfWork, IDisposable
+    public class UnitOfWork<TContext>: IUnitOfWork, IDisposable where TContext: DbContext
     {
-        private DbContext _context;
+        private TContext _context;
 
-        internal DbContext Context {
+        internal TContext Context {
             get { return _context; }
         }
 
         private bool _isDisposed = false;
 
-        public GenericUnitOfWork(DbContext context)
+        public UnitOfWork(TContext context)
         {
             _context = context;
         }
