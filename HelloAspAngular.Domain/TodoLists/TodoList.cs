@@ -19,5 +19,10 @@ namespace HelloAspAngular.Domain.TodoLists
         public string Name { get; set; }
         public byte[] EntityVersion { get; set; }
         public virtual ICollection<Todo> Todos { get; private set; }
+
+        public IEnumerable<Todo> GetArchivableTodos()
+        {
+            return Todos.Where(t => t.IsDone).ToArray();
+        }
     }
 }

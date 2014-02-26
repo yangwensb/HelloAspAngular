@@ -17,7 +17,7 @@ namespace HelloAspAngular.Domain.TodoLists
 
         public void Archive(TodoList todoList)
         {
-            var todos = todoList.Todos.Where(t => t.IsDone).ToArray();
+            var todos = todoList.GetArchivableTodos();
             foreach (var todo in todos)
             {
                 todoList.Todos.Remove(todo);

@@ -60,10 +60,6 @@
     <Compile Include="VersionableRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HelloAspAngular.App\HelloAspAngular.App.csproj">
-      <Project>{df8c0023-22ec-4ec2-86bb-45022ff528c5}</Project>
-      <Name>HelloAspAngular.App</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HelloAspAngular.Domain\HelloAspAngular.Domain.csproj">
       <Project>{9a926d6f-79ba-4ca9-8673-1d5aa241afb3}</Project>
       <Name>HelloAspAngular.Domain</Name>
