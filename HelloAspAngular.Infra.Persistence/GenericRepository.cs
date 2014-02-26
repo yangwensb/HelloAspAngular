@@ -1,5 +1,4 @@
-﻿using HelloAspAngular.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,14 +6,16 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Repositories
+namespace HelloAspAngular.Infra.Persistence
 {
-    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity, TContext> : IRepository<TEntity>
+        where TEntity : class
+        where TContext: DbContext
     {
-        private TodoListContext _context;
+        private TContext _context;
         private DbSet<TEntity> _dbSet;
 
-        protected TodoListContext Context
+        protected TContext Context
         {
             get { return _context; }
         }
@@ -24,7 +25,7 @@ namespace HelloAspAngular.Infra.Repositories
             get { return _dbSet; }
         }
 
-        internal GenericRepository(TodoListContext context)
+        internal GenericRepository(TContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();

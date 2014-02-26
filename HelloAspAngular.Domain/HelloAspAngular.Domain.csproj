@@ -40,22 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompositeSpecification.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="ISpecification.cs" />
-    <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="IUnitOfWorkTransaction.cs" />
-    <Compile Include="IVersionableRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Todos\ITodoListRepository.cs" />
-    <Compile Include="Todos\TextNotEmptySpecification.cs" />
-    <Compile Include="Todos\Todo.cs" />
-    <Compile Include="Todos\TodoList.cs" />
+    <Compile Include="TodoLists\ITodoListRepository.cs" />
+    <Compile Include="TodoLists\ITodoListService.cs" />
+    <Compile Include="TodoLists\Todo.cs" />
+    <Compile Include="TodoLists\TodoList.cs" />
+    <Compile Include="TodoLists\TodoListService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HelloAspAngular.Common\HelloAspAngular.Common.csproj">
-      <Project>{307cc8e8-b6fa-48ae-8ca0-3b69c919a7fa}</Project>
-      <Name>HelloAspAngular.Common</Name>
+    <ProjectReference Include="..\HelloAspAngular.Infra\HelloAspAngular.Infra.csproj">
+      <Project>{529285fc-b574-4f17-a55c-fa7afdd27285}</Project>
+      <Name>HelloAspAngular.Infra</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

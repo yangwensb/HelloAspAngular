@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace HelloAspAngular.Domain.Todos
+namespace HelloAspAngular.Domain.TodoLists
 {
     public class Todo
     {

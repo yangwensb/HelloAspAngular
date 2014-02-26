@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Domain
+namespace HelloAspAngular.Infra
 {
-    public interface ISpecification<T>
+    public interface IVersionable
     {
-        bool IsSatisfiedBy(T subject);
+        int Id { get; set; }
+        byte[] RowVersion { get; set; }
     }
 }

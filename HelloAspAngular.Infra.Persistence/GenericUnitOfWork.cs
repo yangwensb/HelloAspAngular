@@ -1,6 +1,6 @@
-﻿using HelloAspAngular.Common;
-using HelloAspAngular.Domain;
-using HelloAspAngular.Domain.Todos;
+﻿using HelloAspAngular.Domain;
+using HelloAspAngular.Domain.TodoLists;
+using HelloAspAngular.Infra.Persistence.TodoLists;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,27 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Repositories
+namespace HelloAspAngular.Infra.Persistence
 {
-    public class UnitOfWork: IUnitOfWork, IDisposable
+    public class GenericUnitOfWork: IUnitOfWork, IDisposable
     {
-        private TodoListContext _context;
+        private DbContext _context;
 
-        internal TodoListContext Context {
+        internal DbContext Context {
             get { return _context; }
-        }
-
-        private Lazy<ITodoListRepository> _todoListRepos;
-        public ITodoListRepository TodoListRepository {
-            get { return _todoListRepos.Value; }
         }
 
         private bool _isDisposed = false;
 
-        public UnitOfWork(TodoListContext context)
+        public GenericUnitOfWork(DbContext context)
         {
             _context = context;
-            _todoListRepos = new Lazy<ITodoListRepository>(() => new TodoListRepository(_context));
         }
 
         public void Dispose()

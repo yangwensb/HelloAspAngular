@@ -1,11 +1,6 @@
 using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using HelloAspAngular.App;
-using HelloAspAngular.App.Impl;
-using HelloAspAngular.Domain;
-using HelloAspAngular.Infra.Repositories;
-using HelloAspAngular.Domain.Todos;
 
 namespace HelloAspAngular.Web.App_Start
 {

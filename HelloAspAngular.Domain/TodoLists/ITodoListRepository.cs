@@ -1,11 +1,12 @@
 ﻿using HelloAspAngular.Domain;
+using HelloAspAngular.Infra;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Domain.Todos
+namespace HelloAspAngular.Domain.TodoLists
 {
     public interface ITodoListRepository: IVersionableRepository<TodoList>
     {

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using HelloAspAngular.Infra;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Domain
+namespace HelloAspAngular.Infra
 {
     public class CompositeSpecification<T> : ISpecification<T>
     {

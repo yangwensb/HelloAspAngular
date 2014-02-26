@@ -1,16 +1,16 @@
 ﻿using HelloAspAngular.Domain;
-using HelloAspAngular.Domain.Todos;
+using HelloAspAngular.Domain.TodoLists;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Repositories
+namespace HelloAspAngular.Infra.Persistence.TodoLists
 {
-    public class TodoListRepository : VersionableRepository<TodoList>, ITodoListRepository
+    public class TodoListRepository : VersionableRepository<TodoList, AppContext>, ITodoListRepository
     {
-        public TodoListRepository(TodoListContext context): base(context)
+        public TodoListRepository(AppContext context): base(context)
         {
         }
 

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using HelloAspAngular.App;
 using HelloAspAngular.App.Transfer;
-using HelloAspAngular.Domain.Todos;
+using HelloAspAngular.Domain.TodoLists;
 using HelloAspAngular.Web.Api.ResourceModels;
 using System;
 using System.Collections.Generic;

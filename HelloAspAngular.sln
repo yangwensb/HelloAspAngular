@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAspAngular.App", "Hell
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAspAngular.Domain", "HelloAspAngular.Domain\HelloAspAngular.Domain.csproj", "{9A926D6F-79BA-4CA9-8673-1D5AA241AFB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAspAngular.Common", "HelloAspAngular.Common\HelloAspAngular.Common.csproj", "{307CC8E8-B6FA-48AE-8CA0-3B69C919A7FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAspAngular.Infra.Persistence", "HelloAspAngular.Infra.Persistence\HelloAspAngular.Infra.Persistence.csproj", "{AE426CAC-1E68-4081-A69C-25D5983C17A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,10 +42,10 @@ Global
 		{9A926D6F-79BA-4CA9-8673-1D5AA241AFB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A926D6F-79BA-4CA9-8673-1D5AA241AFB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A926D6F-79BA-4CA9-8673-1D5AA241AFB3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{307CC8E8-B6FA-48AE-8CA0-3B69C919A7FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{307CC8E8-B6FA-48AE-8CA0-3B69C919A7FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{307CC8E8-B6FA-48AE-8CA0-3B69C919A7FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{307CC8E8-B6FA-48AE-8CA0-3B69C919A7FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE426CAC-1E68-4081-A69C-25D5983C17A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE426CAC-1E68-4081-A69C-25D5983C17A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE426CAC-1E68-4081-A69C-25D5983C17A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE426CAC-1E68-4081-A69C-25D5983C17A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

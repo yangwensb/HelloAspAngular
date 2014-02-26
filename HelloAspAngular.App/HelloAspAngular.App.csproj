@@ -41,17 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAppUnitOfWork.cs" />
     <Compile Include="Transfer\AddTodoAsyncResult.cs" />
     <Compile Include="Transfer\EntityDescriptor.cs" />
-    <Compile Include="Impl\TodoListAppService.cs" />
+    <Compile Include="TodoListAppService.cs" />
     <Compile Include="ITodoListAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HelloAspAngular.Common\HelloAspAngular.Common.csproj">
-      <Project>{307cc8e8-b6fa-48ae-8ca0-3b69c919a7fa}</Project>
-      <Name>HelloAspAngular.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HelloAspAngular.Domain\HelloAspAngular.Domain.csproj">
       <Project>{9a926d6f-79ba-4ca9-8673-1d5aa241afb3}</Project>
       <Name>HelloAspAngular.Domain</Name>

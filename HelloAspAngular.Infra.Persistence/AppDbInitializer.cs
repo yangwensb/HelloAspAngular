@@ -1,4 +1,4 @@
-﻿using HelloAspAngular.Domain.Todos;
+﻿using HelloAspAngular.Domain.TodoLists;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Repositories
+namespace HelloAspAngular.Infra.Persistence
 {
-    public class TodoListDbInitializer : DropCreateDatabaseIfModelChanges<TodoListContext>
+    public class AppDbInitializer : DropCreateDatabaseIfModelChanges<AppContext>
     {
-        protected override void Seed(TodoListContext context)
+        protected override void Seed(AppContext context)
         {
             {
                 var list = new TodoList()

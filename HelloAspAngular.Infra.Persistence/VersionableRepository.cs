@@ -1,16 +1,18 @@
-﻿using HelloAspAngular.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Repositories
+namespace HelloAspAngular.Infra.Persistence
 {
-    public class VersionableRepository<TEntity> : GenericRepository<TEntity> where TEntity: class, IVersionable
+    public class VersionableRepository<TEntity, TContext> : GenericRepository<TEntity, TContext>
+        where TEntity: class, IVersionable
+        where TContext: DbContext
     {
-        public VersionableRepository(TodoListContext context)
+        public VersionableRepository(TContext context)
             : base(context)
         {
 

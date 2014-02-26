@@ -1,27 +1,28 @@
 ﻿using HelloAspAngular.Domain;
-using HelloAspAngular.Domain.Todos;
+using HelloAspAngular.Domain.TodoLists;
+using HelloAspAngular.Infra.Persistence.TodoLists;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace HelloAspAngular.Infra.Repositories
+namespace HelloAspAngular.Infra.Persistence
 {
-    public class TodoListContext: DbContext
+    public class AppContext: DbContext
     {
         // EntityFramework.SqlServer.dllがbinにコピーされるようにする。
         private static Type _dummyForDllCopy = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
 
-        static TodoListContext()
+        static AppContext()
         {
-            Database.SetInitializer(new TodoListDbInitializer());
+            Database.SetInitializer(new AppDbInitializer());
         }
 
         public DbSet<TodoList> TodoLists { get; set; }
         public DbSet<Todo> Todos { get; set; }
 
-        public TodoListContext()
+        public AppContext()
             : base("HelloAspAngular")
         {
         }

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Domain
+namespace HelloAspAngular.Infra
 {
     public interface IRepository<TEntity> where TEntity : class
     {

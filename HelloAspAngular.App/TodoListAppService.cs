@@ -1,21 +1,23 @@
 ﻿using HelloAspAngular.App.Transfer;
 using HelloAspAngular.Domain;
-using HelloAspAngular.Domain.Todos;
+using HelloAspAngular.Domain.TodoLists;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.App.Impl
+namespace HelloAspAngular.App
 {
     public class TodoListAppService: ITodoListAppService
     {
-        private IUnitOfWork _unitOfWork;
+        private IAppUnitOfWork _unitOfWork;
+        private ITodoListService _todoListService;
 
-        public TodoListAppService(IUnitOfWork unitOfWork)
+        public TodoListAppService(IAppUnitOfWork unitOfWork, ITodoListService todoListService)
         {
             _unitOfWork = unitOfWork;
+            _todoListService = todoListService;
         }
 
         public async Task<AddTodoAsyncResult> AddTodoAsync(EntityDescriptor todoListDesc, Todo todo)
@@ -60,9 +62,7 @@ namespace HelloAspAngular.App.Impl
             };
 
             var storedList = await _unitOfWork.TodoListRepository.FindAsync(l => l.Id == list.Id, new[] { "Todos" });
-
-            var todos = storedList.Archive();
-            _unitOfWork.TodoListRepository.RemoveTodos(todos);
+            _todoListService.Archive(storedList);
 
             _unitOfWork.TodoListRepository.Touch(list);
             await _unitOfWork.SaveAsync();
