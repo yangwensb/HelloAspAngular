@@ -20,7 +20,7 @@ namespace HelloAspAngular.Domain.TodoLists
         public byte[] EntityVersion { get; set; }
         public virtual ICollection<Todo> Todos { get; private set; }
 
-        public IEnumerable<Todo> GetArchivableTodos()
+        public IEnumerable<Todo> GetTodosShouldBeArchived()
         {
             return Todos.Where(t => t.IsDone).ToArray();
         }
