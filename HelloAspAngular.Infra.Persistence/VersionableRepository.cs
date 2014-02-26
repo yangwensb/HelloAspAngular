@@ -34,7 +34,7 @@ namespace HelloAspAngular.Infra.Persistence
                 }
             }
 
-            entry.Property("RowVersion").IsModified = true;
+            entry.Property("EntityVersion").IsModified = true;
         }
     }
 }

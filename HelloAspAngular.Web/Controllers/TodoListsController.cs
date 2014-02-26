@@ -40,7 +40,7 @@ namespace HelloAspAngular.Web.Controllers
         {
             var list = await _todoListRepository.FindAsync(l => l.Id == id, new[] { "Todos" });
             var listRm = Mapper.Map<TodoListDetailResourceModel>(list);
-            return ETagOk(list.RowVersion, listRm);
+            return ETagOk(list.EntityVersion, listRm);
         }
 
         // POST api/todolists/{id}/todos
@@ -55,7 +55,7 @@ namespace HelloAspAngular.Web.Controllers
             var todoRm = Mapper.Map<TodoResourceModel>(ret.Todo);
             var path = string.Format("~/api/todolists/{0}/todos/{1}", id, ret.Todo.Id);
             var uri = Url.Content(path);
-            return ETagCreated(ret.TodoListDescriptor.RowVersion, uri, todoRm);
+            return ETagCreated(ret.TodoListDescriptor.EntityVersion, uri, todoRm);
         }
 
         // PUT api/todolists/{id}/todos/{todoId}
@@ -68,7 +68,7 @@ namespace HelloAspAngular.Web.Controllers
 
             var ret = await _todoListAppService.UpdateTodoAsync(todoListDesc, todo);
 
-            return ETagOk(ret.RowVersion, string.Empty);
+            return ETagOk(ret.EntityVersion, string.Empty);
         }
 
         // PUT api/todolists/{id}/archive
@@ -79,17 +79,17 @@ namespace HelloAspAngular.Web.Controllers
 
             var ret = await _todoListAppService.ArchiveAsync(todoListDesc);
 
-            return ETagOk(ret.RowVersion, string.Empty);
+            return ETagOk(ret.EntityVersion, string.Empty);
         }
 
-        private IHttpActionResult ETagOk<T>(byte[] rowVersion, T content)
+        private IHttpActionResult ETagOk<T>(byte[] entityVersion, T content)
         {
-            return new ETagOkActionResult<T>(rowVersion, content, this);
+            return new ETagOkActionResult<T>(entityVersion, content, this);
         }
 
-        private IHttpActionResult ETagCreated<T>(byte[] rowVersion, string uri, T content)
+        private IHttpActionResult ETagCreated<T>(byte[] entityVersion, string uri, T content)
         {
-            return new ETagCreatedActionResult<T>(rowVersion, new Uri(uri), content, this);
+            return new ETagCreatedActionResult<T>(entityVersion, new Uri(uri), content, this);
         }
 
         private byte[] GetETag()

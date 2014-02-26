@@ -28,7 +28,7 @@ namespace HelloAspAngular.App
             var list = new TodoList()
             {
                 Id = todoListDesc.Id,
-                RowVersion = todoListDesc.RowVersion,
+                EntityVersion = todoListDesc.EntityVersion,
             };
 
             _todoListRepository.Attach(list);
@@ -37,7 +37,7 @@ namespace HelloAspAngular.App
             _todoListRepository.Touch(list);
             await _unitOfWork.SaveAsync();
 
-            return new AddTodoAsyncResult(new EntityDescriptor(list.Id, list.RowVersion), todo);
+            return new AddTodoAsyncResult(new EntityDescriptor(list.Id, list.EntityVersion), todo);
         }
 
         public async Task<EntityDescriptor> UpdateTodoAsync(EntityDescriptor todoListDesc, Todo todo)
@@ -45,7 +45,7 @@ namespace HelloAspAngular.App
             var list = new TodoList()
             {
                 Id = todoListDesc.Id,
-                RowVersion = todoListDesc.RowVersion,
+                EntityVersion = todoListDesc.EntityVersion,
             };
 
             _todoListRepository.UpdateTodo(todo);
@@ -53,7 +53,7 @@ namespace HelloAspAngular.App
             _todoListRepository.Touch(list);
             await _unitOfWork.SaveAsync();
 
-            return new EntityDescriptor(list.Id, list.RowVersion);
+            return new EntityDescriptor(list.Id, list.EntityVersion);
         }
 
         public async Task<EntityDescriptor> ArchiveAsync(EntityDescriptor todoListDesc)
@@ -61,7 +61,7 @@ namespace HelloAspAngular.App
             var list = new TodoList()
             {
                 Id = todoListDesc.Id,
-                RowVersion = todoListDesc.RowVersion,
+                EntityVersion = todoListDesc.EntityVersion,
             };
 
             var storedList = await _todoListRepository.FindAsync(l => l.Id == list.Id, new[] { "Todos" });
@@ -70,7 +70,7 @@ namespace HelloAspAngular.App
             _todoListRepository.Touch(list);
             await _unitOfWork.SaveAsync();
 
-            return new EntityDescriptor(list.Id, list.RowVersion);
+            return new EntityDescriptor(list.Id, list.EntityVersion);
         }
     }
 }

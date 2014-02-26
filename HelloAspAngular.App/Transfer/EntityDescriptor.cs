@@ -9,12 +9,12 @@ namespace HelloAspAngular.App.Transfer
     public class EntityDescriptor
     {
         public int Id { get; private set; }
-        public byte[] RowVersion { get; private set; }
+        public byte[] EntityVersion { get; private set; }
 
-        public EntityDescriptor(int id, byte[] rowVersion)
+        public EntityDescriptor(int id, byte[] entityVersion)
         {
             Id = id;
-            RowVersion = rowVersion;
+            EntityVersion = entityVersion;
         }
     }
 }

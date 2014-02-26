@@ -9,6 +9,6 @@ namespace HelloAspAngular.Infra
     public interface IVersionable
     {
         int Id { get; set; }
-        byte[] RowVersion { get; set; }
+        byte[] EntityVersion { get; set; }
     }
 }

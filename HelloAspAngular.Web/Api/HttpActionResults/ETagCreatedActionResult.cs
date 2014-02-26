@@ -14,17 +14,17 @@ namespace HelloAspAngular.Web.Api.HttpActionResults
 {
     public class ETagCreatedActionResult<T>: CreatedNegotiatedContentResult<T>
     {
-        private byte[] _rowVersion;
+        private byte[] _entityVersion;
 
-        public ETagCreatedActionResult(byte[] rowVersion, Uri uri, T content, ApiController controller) : base(uri, content, controller)
+        public ETagCreatedActionResult(byte[] entityVersion, Uri uri, T content, ApiController controller) : base(uri, content, controller)
         {
-            _rowVersion = rowVersion;
+            _entityVersion = entityVersion;
         }
 
         public async override Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
             var response = await base.ExecuteAsync(cancellationToken);
-            response.Headers.ETag = new EntityTagHeaderValue("\"" + Convert.ToBase64String(_rowVersion) + "\"");
+            response.Headers.ETag = new EntityTagHeaderValue("\"" + Convert.ToBase64String(_entityVersion) + "\"");
             return response;
         }
     }

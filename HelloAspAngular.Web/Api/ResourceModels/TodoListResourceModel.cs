@@ -10,7 +10,7 @@ namespace HelloAspAngular.Web.Api.ResourceModels
     public class TodoListResourceModel: IVersionable
     {
         public int Id { get; set; }
-        public byte[] RowVersion { get; set; }
+        public byte[] EntityVersion { get; set; }
         public string Name { get; set; }
     }
 }

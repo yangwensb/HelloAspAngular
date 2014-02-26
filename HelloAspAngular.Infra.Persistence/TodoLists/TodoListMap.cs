@@ -14,7 +14,7 @@ namespace HelloAspAngular.Infra.Persistence.TodoLists
         {
             this.HasKey(l => l.Id);
 
-            this.Property(l => l.RowVersion).IsRowVersion();
+            this.Property(l => l.EntityVersion).IsRowVersion();
 
             this.HasMany(l => l.Todos).
                 WithRequired(t => t.TodoList).

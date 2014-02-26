@@ -17,7 +17,7 @@ namespace HelloAspAngular.Domain.TodoLists
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public byte[] RowVersion { get; set; }
+        public byte[] EntityVersion { get; set; }
         public virtual ICollection<Todo> Todos { get; private set; }
     }
 }
