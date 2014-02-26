@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HelloAspAngular.Infra.Persistence.TodoLists
 {
-    public class TodoListRepository : VersionableRepository<TodoList, AppContext>, ITodoListRepository
+    public class TodoListRepository : VersionedRepository<TodoList, AppContext>, ITodoListRepository
     {
         public TodoListRepository(AppContext context): base(context)
         {

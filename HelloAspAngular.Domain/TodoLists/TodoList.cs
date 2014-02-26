@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HelloAspAngular.Domain.TodoLists
 {
-    public class TodoList: IVersionable
+    public class TodoList: IVersioned
     {
         public TodoList()
         {
@@ -17,6 +17,7 @@ namespace HelloAspAngular.Domain.TodoLists
 
         public int Id { get; set; }
         public string Name { get; set; }
+        public TodoListKind Kind { get; set; }
         public byte[] EntityVersion { get; set; }
         public virtual ICollection<Todo> Todos { get; private set; }
 
@@ -24,5 +25,11 @@ namespace HelloAspAngular.Domain.TodoLists
         {
             return Todos.Where(t => t.IsDone).ToArray();
         }
+    }
+
+    public enum TodoListKind: byte
+    {
+        Normal = 0,
+        Archived = 1,
     }
 }

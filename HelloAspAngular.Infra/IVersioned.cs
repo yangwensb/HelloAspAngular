@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace HelloAspAngular.Infra
 {
-    public interface IVersionableRepository<TEntity> : IRepository<TEntity> where TEntity : class, IVersionable
+    public interface IVersioned
     {
-        void Touch(TEntity entity);
+        int Id { get; set; }
+        byte[] EntityVersion { get; set; }
     }
 }

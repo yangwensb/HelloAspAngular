@@ -15,7 +15,16 @@ namespace HelloAspAngular.Infra.Persistence
             {
                 var list = new TodoList()
                 {
+                    Name = "Archived",
+                    Kind = TodoListKind.Archived,
+                };
+                context.TodoLists.Add(list);
+            }
+            {
+                var list = new TodoList()
+                {
                     Name = "リスト1",
+                    Kind = TodoListKind.Normal,
                 };
                 context.TodoLists.Add(list);
             }
@@ -23,6 +32,7 @@ namespace HelloAspAngular.Infra.Persistence
                 var list = new TodoList()
                 {
                     Name = "リスト2",
+                    Kind = TodoListKind.Normal,
                 };
                 context.TodoLists.Add(list);
             }
@@ -30,6 +40,7 @@ namespace HelloAspAngular.Infra.Persistence
                 var list = new TodoList()
                 {
                     Name = "リスト3",
+                    Kind = TodoListKind.Normal,
                 };
                 context.TodoLists.Add(list);
             }

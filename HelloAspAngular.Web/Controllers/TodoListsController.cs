@@ -31,8 +31,8 @@ namespace HelloAspAngular.Web.Controllers
         // GET api/todolists
         public async Task<IEnumerable<TodoListResourceModel>> Get()
         {
-            var lists = await _todoListRepository.FindAllAsync();
-            return Mapper.Map<IEnumerable<TodoListResourceModel>>(lists);
+            var lists = await _todoListRepository.FindAllAsync(l => l.Kind == TodoListKind.Normal);
+            return Mapper.Map<IEnumerable<TodoListResourceModel>>(lists);  // todo: use Ok()
         }
 
         // GET api/todolists/{id}
@@ -67,13 +67,30 @@ namespace HelloAspAngular.Web.Controllers
             todo.Id = todoId;
 
             var ret = await _todoListAppService.UpdateTodoAsync(todoListDesc, todo);
+            return ETagOk(ret.EntityVersion, string.Empty);
+        }
 
+        // GET api/todolists/archived
+        [Route("api/todolists/archived")]
+        public async Task<IHttpActionResult> GetArchived()
+        {
+            var list = await _todoListRepository.FindAsync(l => l.Kind == TodoListKind.Archived, new[] { "Todos" });
+            var listRm = Mapper.Map<TodoListDetailResourceModel>(list);
+            return ETagOk(list.EntityVersion, listRm);
+        }
+
+        // DELETE api/todolists/{id}/clear
+        [Route("api/todolists/{id}/clear")]
+        public async Task<IHttpActionResult> DeleteTodos(int id)
+        {
+            var todoListDesc = new EntityDescriptor(id, GetETag());
+            var ret = await _todoListAppService.ClearArchivedTodosAsync(todoListDesc);
             return ETagOk(ret.EntityVersion, string.Empty);
         }
 
         // PUT api/todolists/{id}/archive
-        [HttpPut, Route("api/todolists/{id}/archive")]
-        public async Task<IHttpActionResult> Archive(int id)
+        [Route("api/todolists/{id}/archive")]
+        public async Task<IHttpActionResult> PutArchive(int id)
         {
             var todoListDesc = new EntityDescriptor(id, GetETag());
 

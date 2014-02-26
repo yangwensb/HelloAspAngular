@@ -47,8 +47,8 @@
     <Compile Include="ISpecification.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitOfWorkTransaction.cs" />
-    <Compile Include="IVersionable.cs" />
-    <Compile Include="IVersionableRepository.cs" />
+    <Compile Include="IVersioned.cs" />
+    <Compile Include="IVersionedRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

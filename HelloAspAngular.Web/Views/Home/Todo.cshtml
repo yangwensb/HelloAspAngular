@@ -5,7 +5,23 @@
 
     <div ng-show="todoLists !== null">
         @Html.Partial("Todo/_TodoListTabs")
-        @Html.Partial("Todo/_TodoList")
-        @Html.Partial("Todo/_AddTodoForm")
+
+        <div ng-controller="TodoListCtrl" ng-show="!isActive('archived')">
+            @Html.Partial("Todo/_TodoList")
+            @Html.Partial("Todo/_AddTodoForm")
+        </div>
+
+        <div ng-controller="ArchivedTodoListCtrl" ng-show="isActive('archived')">
+            <span>{{activeTodoList.Todos.length}} archived</span>
+            [ <a href="" ng-click="clearTodos()">clear</a> ]
+            <ul class="list-unstyled">
+                <li ng-repeat="todo in activeTodoList.Todos" class="checkbox">
+                    <label>
+                        <input type="checkbox" disabled="disabled" ng-model="todo.IsDone" ng-change="updateTodo(todo)">
+                        <span class="done-{{todo.IsDone}}">{{todo.Text}}</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

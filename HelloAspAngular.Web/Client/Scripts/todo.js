@@ -1,8 +1,34 @@
-﻿angular.module("todoCtrl", []).
-    controller("TodoCtrl", ["$scope", "$http", function ($scope, $http) {
+﻿angular.module("todoCtrls", []).
+    controller("TodoPageCtrl", ["$scope", "$http", function ($scope, $http) {
         // プロパティ
         $scope.todoLists = null;
         $scope.activeTodoList = null;
+
+        // メソッド
+        $scope.isActive = function (todoListId) {
+            return todoListId === "archived" ?
+                $scope.activeTodoList.Kind === 1 :
+                todoListId === $scope.activeTodoList.Id;
+        };
+
+        $scope.activate = function (todoListId) {
+            var url = todoListId === "archived" ?
+                "/api/todolists/archived" :
+                "/api/todolists/" + todoListId;
+            $http.get(url).success(function (data, status, headers) {
+                $scope.activeTodoList = data;
+                $scope.activeTodoList.etag = headers("ETag");
+            });
+        };
+
+        // 初期化
+        $http.get("/api/todolists").success(function (data) {
+            $scope.todoLists = data;
+            $scope.activate($scope.todoLists[0].Id);
+        });
+    }]).
+    controller("TodoListCtrl", ["$scope", "$http", function ($scope, $http) {
+        // プロパティ
         $scope.todoText = "";
 
         // メソッド
@@ -60,21 +86,25 @@
             });
             return count;
         };
+    }]).
+    controller("ArchivedTodoListCtrl", ["$scope", "$http", function ($scope, $http) {
+        // メソッド
+        function getHttpConfig() {
+            return {
+                headers: { 'If-Match': $scope.activeTodoList.etag }
+            };
+        }
 
-        $scope.isActive = function (todoList) {
-            return todoList.Id === $scope.activeTodoList.Id;
-        };
+        $scope.clearTodos = function () {
+            if ($scope.activeTodoList.Todos.length === 0) {
+                return;
+            }
 
-        $scope.activate = function (todoListId) {
-            $http.get("/api/todolists/" + todoListId).success(function (data, status, headers) {
-                $scope.activeTodoList = data;
+            $scope.activeTodoList.Todos = [];
+
+            var url = "/api/todolists/" + $scope.activeTodoList.Id + "/clear";
+            $http.delete(url, getHttpConfig()).success(function (data, status, headers) {
                 $scope.activeTodoList.etag = headers("ETag");
             });
         };
-        
-        // 初期化
-        $http.get("/api/todolists").success(function (data) {
-            $scope.todoLists = data;
-            $scope.activate($scope.todoLists[0].Id);
-        });
     }]);

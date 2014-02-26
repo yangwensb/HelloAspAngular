@@ -1,9 +1,9 @@
-﻿angular.module("todoApp", ["ngRoute", "todoCtrl"]).
+﻿angular.module("todoApp", ["ngRoute", "todoCtrls"]).
     config(["$routeProvider", "$httpProvider", function ($routeProvider, $httpProvider) {
         $routeProvider.
             when("/", {
                 templateUrl: "/Home/Todo",
-                controller: "TodoCtrl"
+                controller: "TodoPageCtrl"
             }).
             when("/about", {
                 templateUrl: "/Home/About"

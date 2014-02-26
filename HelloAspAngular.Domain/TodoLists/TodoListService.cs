@@ -15,14 +15,25 @@ namespace HelloAspAngular.Domain.TodoLists
             _todoListRepository = todoListRepository;
         }
 
-        public void Archive(TodoList todoList)
+        public async Task<bool> ArchiveAsync(TodoList todoList)
         {
+            var archivedTodoList = await _todoListRepository.FindAsync(l => l.Kind == TodoListKind.Archived);
+
             var todos = todoList.GetTodosShouldBeArchived();
             foreach (var todo in todos)
             {
-                todoList.Todos.Remove(todo);
+                todo.TodoList = archivedTodoList;
             }
+            return todos.Any();
+        }
+
+        public async Task<bool> ClearArchivedTodosAsync()
+        {
+            var storedList = await _todoListRepository.FindAsync(l => l.Kind == TodoListKind.Archived, new[] { "Todos" });
+            var todos = storedList.Todos.ToArray();
+            storedList.Todos.Clear();
             _todoListRepository.RemoveTodos(todos);
+            return todos.Any();
         }
     }
 }

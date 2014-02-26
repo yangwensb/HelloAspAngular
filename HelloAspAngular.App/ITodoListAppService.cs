@@ -10,8 +10,9 @@ namespace HelloAspAngular.App
 {
     public interface ITodoListAppService
     {
-        Task<EntityDescriptor> ArchiveAsync(EntityDescriptor todoListDesc);
         Task<AddTodoAsyncResult> AddTodoAsync(EntityDescriptor todoListDesc, Todo todo);
         Task<EntityDescriptor> UpdateTodoAsync(EntityDescriptor todoListDesc, Todo todo);
+        Task<EntityDescriptor> ArchiveAsync(EntityDescriptor todoListDesc);
+        Task<EntityDescriptor> ClearArchivedTodosAsync(EntityDescriptor todoListDesc);
     }
 }

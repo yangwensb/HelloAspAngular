@@ -57,7 +57,7 @@
     <Compile Include="TodoLists\TodoMap.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="UnitOfWorkTransaction.cs" />
-    <Compile Include="VersionableRepository.cs" />
+    <Compile Include="VersionedRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelloAspAngular.Domain\HelloAspAngular.Domain.csproj">
