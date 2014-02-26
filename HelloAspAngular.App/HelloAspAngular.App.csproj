@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAppUnitOfWork.cs" />
     <Compile Include="Transfer\AddTodoAsyncResult.cs" />
     <Compile Include="Transfer\EntityDescriptor.cs" />
     <Compile Include="TodoListAppService.cs" />

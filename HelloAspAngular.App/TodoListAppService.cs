@@ -1,6 +1,7 @@
 ﻿using HelloAspAngular.App.Transfer;
 using HelloAspAngular.Domain;
 using HelloAspAngular.Domain.TodoLists;
+using HelloAspAngular.Infra;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,15 @@ namespace HelloAspAngular.App
 {
     public class TodoListAppService: ITodoListAppService
     {
-        private IAppUnitOfWork _unitOfWork;
+        private IUnitOfWork _unitOfWork;
         private ITodoListService _todoListService;
+        private ITodoListRepository _todoListRepository;
 
-        public TodoListAppService(IAppUnitOfWork unitOfWork, ITodoListService todoListService)
+        public TodoListAppService(IUnitOfWork unitOfWork, ITodoListService todoListService, ITodoListRepository todoListRepository)
         {
             _unitOfWork = unitOfWork;
             _todoListService = todoListService;
+            _todoListRepository = todoListRepository;
         }
 
         public async Task<AddTodoAsyncResult> AddTodoAsync(EntityDescriptor todoListDesc, Todo todo)
@@ -28,10 +31,10 @@ namespace HelloAspAngular.App
                 RowVersion = todoListDesc.RowVersion,
             };
 
-            _unitOfWork.TodoListRepository.Attach(list);
+            _todoListRepository.Attach(list);
             list.Todos.Add(todo);
 
-            _unitOfWork.TodoListRepository.Touch(list);
+            _todoListRepository.Touch(list);
             await _unitOfWork.SaveAsync();
 
             return new AddTodoAsyncResult(new EntityDescriptor(list.Id, list.RowVersion), todo);
@@ -45,9 +48,9 @@ namespace HelloAspAngular.App
                 RowVersion = todoListDesc.RowVersion,
             };
 
-            _unitOfWork.TodoListRepository.UpdateTodo(todo);
+            _todoListRepository.UpdateTodo(todo);
 
-            _unitOfWork.TodoListRepository.Touch(list);
+            _todoListRepository.Touch(list);
             await _unitOfWork.SaveAsync();
 
             return new EntityDescriptor(list.Id, list.RowVersion);
@@ -61,10 +64,10 @@ namespace HelloAspAngular.App
                 RowVersion = todoListDesc.RowVersion,
             };
 
-            var storedList = await _unitOfWork.TodoListRepository.FindAsync(l => l.Id == list.Id, new[] { "Todos" });
+            var storedList = await _todoListRepository.FindAsync(l => l.Id == list.Id, new[] { "Todos" });
             _todoListService.Archive(storedList);
 
-            _unitOfWork.TodoListRepository.Touch(list);
+            _todoListRepository.Touch(list);
             await _unitOfWork.SaveAsync();
 
             return new EntityDescriptor(list.Id, list.RowVersion);
