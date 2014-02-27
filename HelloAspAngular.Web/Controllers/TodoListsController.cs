@@ -65,7 +65,6 @@ namespace HelloAspAngular.Web.Controllers
             var todoListDesc = new EntityDescriptor(id, GetETag());
             var todo = Mapper.Map<Todo>(input);
             todo.Id = todoId;
-
             var ret = await _todoListAppService.UpdateTodoAsync(todoListDesc, todo);
             return ETagOk(ret.EntityVersion, string.Empty);
         }
@@ -93,9 +92,7 @@ namespace HelloAspAngular.Web.Controllers
         public async Task<IHttpActionResult> PutArchive(int id)
         {
             var todoListDesc = new EntityDescriptor(id, GetETag());
-
             var ret = await _todoListAppService.ArchiveAsync(todoListDesc);
-
             return ETagOk(ret.EntityVersion, string.Empty);
         }
 
