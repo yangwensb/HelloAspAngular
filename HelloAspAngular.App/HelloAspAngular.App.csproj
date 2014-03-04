@@ -48,13 +48,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HelloAspAngular.Common\HelloAspAngular.Common.csproj">
+      <Project>{0feb2d89-0a1a-4a5d-9595-17fe3f603f67}</Project>
+      <Name>HelloAspAngular.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelloAspAngular.Domain\HelloAspAngular.Domain.csproj">
       <Project>{9a926d6f-79ba-4ca9-8673-1d5aa241afb3}</Project>
       <Name>HelloAspAngular.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HelloAspAngular.Infra\HelloAspAngular.Infra.csproj">
-      <Project>{529285fc-b574-4f17-a55c-fa7afdd27285}</Project>
-      <Name>HelloAspAngular.Infra</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

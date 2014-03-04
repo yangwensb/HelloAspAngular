@@ -1,4 +1,5 @@
-﻿using HelloAspAngular.Domain;
+﻿using HelloAspAngular.Common;
+using HelloAspAngular.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
