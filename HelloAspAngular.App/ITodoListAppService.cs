@@ -13,6 +13,6 @@ namespace HelloAspAngular.App
         Task<AddTodoAsyncResult> AddTodoAsync(EntityDescriptor todoListDesc, Todo todo);
         Task<EntityDescriptor> UpdateTodoAsync(EntityDescriptor todoListDesc, Todo todo);
         Task<EntityDescriptor> ArchiveAsync(EntityDescriptor todoListDesc);
-        Task<EntityDescriptor> ClearArchivedTodosAsync(EntityDescriptor todoListDesc);
+        Task<EntityDescriptor> ClearTodosAsync(EntityDescriptor todoListDesc);
     }
 }

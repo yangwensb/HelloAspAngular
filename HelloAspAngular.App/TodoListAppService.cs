@@ -61,9 +61,12 @@ namespace HelloAspAngular.App
             return new EntityDescriptor(prepared);
         }
 
-        public async Task<EntityDescriptor> ClearArchivedTodosAsync(EntityDescriptor todoListDesc)
+        public async Task<EntityDescriptor> ClearTodosAsync(EntityDescriptor todoListDesc)
         {
-            await _todoListService.ClearArchivedTodosAsync();
+            var storedList = await _todoListRepository.FindAsync(l => l.Id == todoListDesc.Id, new[] { "Todos" });
+            var todos = storedList.Todos.ToArray();
+            storedList.Todos.Clear();
+            _todoListRepository.RemoveTodos(todos);
 
             var prepared = _todoListRepository.PrepareVersioning(todoListDesc);
             await _unitOfWork.SaveAsync();

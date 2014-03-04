@@ -83,7 +83,7 @@ namespace HelloAspAngular.Web.Controllers
         public async Task<IHttpActionResult> DeleteTodos(int id)
         {
             var todoListDesc = new EntityDescriptor(id, GetETag());
-            var ret = await _todoListAppService.ClearArchivedTodosAsync(todoListDesc);
+            var ret = await _todoListAppService.ClearTodosAsync(todoListDesc);
             return ETagOk(ret.EntityVersion, string.Empty);
         }
 
