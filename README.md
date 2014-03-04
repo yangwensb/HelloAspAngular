@@ -1,11 +1,12 @@
 HelloAspAngular
 ===============
 
-HelloAspAngular is a simple todo web application. 
+HelloAspAngular is a sample todo web application. 
 
 ## Technologies
 
 * ASP.NET MVC 5
+* ASP.NET Web API 2
 * AngularJS 1.2
 * EF 6 Code First
 * AutoMapper
