@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Persistence
+namespace HelloAspAngular.Infra
 {
     internal class UnitOfWorkTransaction : IUnitOfWorkTransaction, IDisposable
     {

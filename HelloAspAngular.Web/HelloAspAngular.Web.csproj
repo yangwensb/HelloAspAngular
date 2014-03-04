@@ -232,9 +232,9 @@
       <Project>{9a926d6f-79ba-4ca9-8673-1d5aa241afb3}</Project>
       <Name>HelloAspAngular.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HelloAspAngular.Infra.Persistence\HelloAspAngular.Infra.Persistence.csproj">
+    <ProjectReference Include="..\HelloAspAngular.Infra\HelloAspAngular.Infra.csproj">
       <Project>{ae426cac-1e68-4081-a69c-25d5983c17a1}</Project>
-      <Name>HelloAspAngular.Infra.Persistence</Name>
+      <Name>HelloAspAngular.Infra</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,7 +1,7 @@
 ﻿using HelloAspAngular.Common;
 using HelloAspAngular.Domain;
 using HelloAspAngular.Domain.TodoLists;
-using HelloAspAngular.Infra.Persistence.TodoLists;
+using HelloAspAngular.Infra.TodoLists;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Persistence
+namespace HelloAspAngular.Infra
 {
     public class UnitOfWork<TContext>: IUnitOfWork, IDisposable where TContext: DbContext
     {

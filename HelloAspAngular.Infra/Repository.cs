@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Persistence
+namespace HelloAspAngular.Infra
 {
     public class Repository<TEntity, TContext> : IRepository<TEntity>
         where TEntity : class

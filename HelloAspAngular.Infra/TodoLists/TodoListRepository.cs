@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Persistence.TodoLists
+namespace HelloAspAngular.Infra.TodoLists
 {
     public class TodoListRepository : VersionedRepository<TodoList, AppContext>, ITodoListRepository
     {

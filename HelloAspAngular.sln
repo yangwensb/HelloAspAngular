@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAspAngular.App", "Hell
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAspAngular.Domain", "HelloAspAngular.Domain\HelloAspAngular.Domain.csproj", "{9A926D6F-79BA-4CA9-8673-1D5AA241AFB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAspAngular.Infra.Persistence", "HelloAspAngular.Infra.Persistence\HelloAspAngular.Infra.Persistence.csproj", "{AE426CAC-1E68-4081-A69C-25D5983C17A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAspAngular.Infra", "HelloAspAngular.Infra\HelloAspAngular.Infra.csproj", "{AE426CAC-1E68-4081-A69C-25D5983C17A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAspAngular.Common", "HelloAspAngular.Common\HelloAspAngular.Common.csproj", "{0FEB2D89-0A1A-4A5D-9595-17FE3F603F67}"
 EndProject

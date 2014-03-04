@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Persistence.TodoLists
+namespace HelloAspAngular.Infra.TodoLists
 {
     internal class TodoListMap : EntityTypeConfiguration<TodoList>
     {

@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloAspAngular.Infra.Persistence
+namespace HelloAspAngular.Infra
 {
     public class VersionedRepository<TEntity, TContext> : Repository<TEntity, TContext>
         where TEntity: class, IVersioned, new()
