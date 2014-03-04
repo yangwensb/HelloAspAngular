@@ -23,7 +23,7 @@ namespace HelloAspAngular.Infra
             {
                 var list = new TodoList()
                 {
-                    Name = "リスト1",
+                    Name = "List1",
                     Kind = TodoListKind.Normal,
                 };
                 context.TodoLists.Add(list);
@@ -31,7 +31,7 @@ namespace HelloAspAngular.Infra
             {
                 var list = new TodoList()
                 {
-                    Name = "リスト2",
+                    Name = "List2",
                     Kind = TodoListKind.Normal,
                 };
                 context.TodoLists.Add(list);
@@ -39,7 +39,7 @@ namespace HelloAspAngular.Infra
             {
                 var list = new TodoList()
                 {
-                    Name = "リスト3",
+                    Name = "List3",
                     Kind = TodoListKind.Normal,
                 };
                 context.TodoLists.Add(list);
