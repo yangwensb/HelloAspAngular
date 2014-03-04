@@ -1,7 +1,7 @@
 HelloAspAngular
 ===============
 
-HelloAspAngular is a simple todo web application. 
+HelloAspAngular is a sample todo web application. 
 
 ## Technologies
 
