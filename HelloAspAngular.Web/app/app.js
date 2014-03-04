@@ -1,5 +1,13 @@
-﻿angular.module("todoApp", ["ngRoute", "todoCtrls"]).
-    config(["$routeProvider", "$httpProvider", function ($routeProvider, $httpProvider) {
+﻿(function () {
+    'use strict';
+
+    var app = angular.module("todoApp", [
+        "ngRoute",
+        "todoControllers",
+        "todoServices"
+    ]);
+
+    app.config(["$routeProvider", "$httpProvider", function ($routeProvider, $httpProvider) {
         $routeProvider.
             when("/", {
                 templateUrl: "/Home/Todo",
@@ -12,3 +20,4 @@
 
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
     }]);
+})();

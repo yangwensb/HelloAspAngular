@@ -8,7 +8,7 @@ namespace HelloAspAngular.Domain.TodoLists
 {
     public interface ITodoListService
     {
-        Task<bool> ArchiveAsync(TodoList todoList);
-        Task<bool> ClearArchivedTodosAsync();
+        Task ArchiveAsync(TodoList todoList);
+        Task ClearArchivedTodosAsync();
     }
 }
