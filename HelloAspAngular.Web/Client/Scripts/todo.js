@@ -65,13 +65,7 @@
         };
 
         $scope.archive = function () {
-            var oldTodos = $scope.activeTodoList.Todos;
-            $scope.activeTodoList.Todos = [];
-            angular.forEach(oldTodos, function (todo) {
-                if (!todo.IsDone) {
-                    $scope.activeTodoList.Todos.push(todo);
-                }
-            });
+            $scope.activeTodoList.Todos = todoDomain.getTodosShouldNotBeArchived($scope.activeTodoList.Todos);
 
             var url = "/api/todolists/" + $scope.activeTodoList.Id + "/archive";
             $http.put(url, null, getHttpConfig()).success(function (data, status, headers) {
@@ -80,11 +74,7 @@
         };
 
         $scope.remaining = function () {
-            var count = 0;
-            angular.forEach($scope.activeTodoList.Todos, function (todo) {
-                count += todo.IsDone ? 0 : 1;
-            });
-            return count;
+            return todoDomain.getRemainingTodoCount($scope.activeTodoList.Todos);
         };
     }]).
     controller("ArchivedTodoListCtrl", ["$scope", "$http", function ($scope, $http) {

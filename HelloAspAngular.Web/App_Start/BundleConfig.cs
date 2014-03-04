@@ -26,7 +26,8 @@ namespace HelloAspAngular.Web
                 "~/Scripts/bootstrap.js"));
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Client/Scripts/app.js",
-                "~/Client/Scripts/todo.js"));
+                "~/Client/Scripts/todo.js",
+                "~/Client/Scripts/todo-domain.js"));
         }
     }
 }
