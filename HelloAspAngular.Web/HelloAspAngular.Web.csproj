@@ -144,9 +144,9 @@
       <Link>AutoMapper.Net4.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Client\Scripts\app.js" />
-    <Content Include="Client\Scripts\todo-domain.js" />
-    <Content Include="Client\Styles\app.css" />
+    <Content Include="app\app.js" />
+    <Content Include="app\todo\todo-domain.js" />
+    <Content Include="styles\app.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -171,7 +171,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
-    <Content Include="Client\Scripts\todo.js" />
+    <Content Include="app\todo\todo.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -209,6 +209,7 @@
     <Content Include="Views\Home\Todo.cshtml" />
     <Content Include="Unity.config" />
     <Content Include="Views\Home\Todo\_TodoListTabs.cshtml" />
+    <Content Include="Views\Home\Todo\_ArchivedTodoList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

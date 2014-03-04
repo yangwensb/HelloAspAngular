@@ -14,7 +14,7 @@ namespace HelloAspAngular.Web
             bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
                 "~/Content/bootstrap.css"));
             bundles.Add(new StyleBundle("~/Content/appcss").Include(
-                "~/Client/Styles/app.css"));
+                "~/styles/app.css"));
 
             // js
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
@@ -25,9 +25,9 @@ namespace HelloAspAngular.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js"));
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                "~/Client/Scripts/app.js",
-                "~/Client/Scripts/todo.js",
-                "~/Client/Scripts/todo-domain.js"));
+                "~/app/app.js",
+                "~/app/todo/todo.js",
+                "~/app/todo/todo-domain.js"));
         }
     }
 }
