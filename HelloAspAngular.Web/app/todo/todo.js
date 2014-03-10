@@ -1,40 +1,40 @@
 ﻿(function () {
     'use strict';
 
-    var mod = angular.module("todoControllers", ['todoServices']);
+    var mod = angular.module('todoControllers', ['todoServices']);
 
-    mod.controller("TodoPageCtrl", ["$scope", "$http", "todoService", function ($scope, $http, todoService) {
+    mod.controller('TodoPageCtrl', ['$scope', '$http', 'todoService', function ($scope, $http, todoService) {
         // properties
         $scope.todoLists = null;
         $scope.activeTodoList = null;
 
         // methods
         $scope.isActive = function (todoListId) {
-            return todoListId === "archived" ?
+            return todoListId === 'archived' ?
                 todoService.isArchivedTodoList($scope.activeTodoList) :
                 todoListId === $scope.activeTodoList.Id;
         };
 
         $scope.activate = function (todoListId) {
-            var url = todoListId === "archived" ?
-                "/api/todolists/archived" :
-                "/api/todolists/" + todoListId;
+            var url = todoListId === 'archived' ?
+                '/api/todolists/archived' :
+                '/api/todolists/' + todoListId;
             $http.get(url).success(function (data, status, headers) {
                 $scope.activeTodoList = data;
-                $scope.activeTodoList.etag = headers("ETag");
+                $scope.activeTodoList.etag = headers('ETag');
             });
         };
 
         // init
-        $http.get("/api/todolists").success(function (data) {
+        $http.get('/api/todolists').success(function (data) {
             $scope.todoLists = data;
             $scope.activate($scope.todoLists[0].Id);
         });
     }]);
 
-    mod.controller("TodoListCtrl", ["$scope", "$http", "todoService", function ($scope, $http, todoService) {
+    mod.controller('TodoListCtrl', ['$scope', '$http', 'todoService', function ($scope, $http, todoService) {
         // properties
-        $scope.todoText = "";
+        $scope.todoText = '';
 
         // methods
         function getHttpConfig() {
@@ -53,28 +53,28 @@
             }
 
             $scope.activeTodoList.Todos.push(todo);
-            $scope.todoText = "";
+            $scope.todoText = '';
 
-            var url = "/api/todolists/" + $scope.activeTodoList.Id + "/todos";
+            var url = '/api/todolists/' + $scope.activeTodoList.Id + '/todos';
             $http.post(url, todo, getHttpConfig()).
                 success(function (data, status, headers) {
                     todo.Id = data.Id;
-                    $scope.activeTodoList.etag = headers("ETag");
+                    $scope.activeTodoList.etag = headers('ETag');
                 }).
                 error(function (data, status, headers) {
-                    alert("Processing Failed.");
+                    alert('Processing Failed.');
                     location.reload();
                 });
         };
 
         $scope.updateTodo = function (todo) {
-            var url = "/api/todolists/" + $scope.activeTodoList.Id + "/todos/" + todo.Id;
+            var url = '/api/todolists/' + $scope.activeTodoList.Id + '/todos/' + todo.Id;
             $http.put(url, todo, getHttpConfig()).
                 success(function (data, status, headers) {
-                    $scope.activeTodoList.etag = headers("ETag");
+                    $scope.activeTodoList.etag = headers('ETag');
                 }).
                 error(function (data, status, headers) {
-                    alert("Processing Failed.");
+                    alert('Processing Failed.');
                     location.reload();
                 });
         };
@@ -82,13 +82,13 @@
         $scope.archive = function () {
             $scope.activeTodoList.Todos = todoService.getTodosShouldNotBeArchived($scope.activeTodoList.Todos);
 
-            var url = "/api/todolists/" + $scope.activeTodoList.Id + "/archive";
+            var url = '/api/todolists/' + $scope.activeTodoList.Id + '/archive';
             $http.put(url, null, getHttpConfig()).
                 success(function (data, status, headers) {
-                    $scope.activeTodoList.etag = headers("ETag");
+                    $scope.activeTodoList.etag = headers('ETag');
                 }).
                 error(function (data, status, headers) {
-                    alert("Processing Failed.");
+                    alert('Processing Failed.');
                     location.reload();
                 });
         };
@@ -98,7 +98,7 @@
         };
     }]);
 
-    mod.controller("ArchivedTodoListCtrl", ["$scope", "$http", function ($scope, $http) {
+    mod.controller('ArchivedTodoListCtrl', ['$scope', '$http', function ($scope, $http) {
         // methods
         function getHttpConfig() {
             return {
@@ -113,13 +113,13 @@
 
             $scope.activeTodoList.Todos = [];
 
-            var url = "/api/todolists/" + $scope.activeTodoList.Id + "/clear";
+            var url = '/api/todolists/' + $scope.activeTodoList.Id + '/clear';
             $http.delete(url, getHttpConfig()).
                 success(function (data, status, headers) {
-                    $scope.activeTodoList.etag = headers("ETag");
+                    $scope.activeTodoList.etag = headers('ETag');
                 }).
                 error(function (data, status, headers) {
-                    alert("Processing Failed.");
+                    alert('Processing Failed.');
                     location.reload();
                 });
         };
