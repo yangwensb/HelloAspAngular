@@ -42,7 +42,8 @@ namespace HelloAspAngular.App
 
         public async Task<EntityDescriptor> UpdateTodoAsync(EntityDescriptor todoListDesc, Todo todo)
         {
-            _todoListRepository.UpdateTodo(todo);
+            var storedList = await _todoListRepository.FindAsync(l => l.Id == todoListDesc.Id, new[] { "Todos" });
+            storedList.ChangeTodo(todo);
 
             var prepared = _todoListRepository.PrepareVersioning(todoListDesc);
             await _unitOfWork.SaveAsync();

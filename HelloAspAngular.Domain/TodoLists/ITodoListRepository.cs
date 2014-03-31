@@ -10,7 +10,6 @@ namespace HelloAspAngular.Domain.TodoLists
 {
     public interface ITodoListRepository: IVersionedRepository<TodoList>
     {
-        void UpdateTodo(Todo todo);
         void RemoveTodos(IEnumerable<Todo> todos);
     }
 }
